@@ -1,1 +1,203 @@
 # CoffeeRoma3
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoffeeRoma.ua | Кофе Рома</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #fff7f0;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+/* header */
+header {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+        url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    animation: fadeIn 2s ease;
+}
+
+header h1 {
+    font-size: 50px;
+    margin: 0;
+}
+
+header p {
+    font-size: 22px;
+    margin: 15px 0 30px 0;
+}
+
+header button {
+    padding: 15px 35px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background: #d2691e;
+    color: white;
+    cursor: default; /* неактивная кнопка */
+    opacity: 0.7;
+}
+
+/* sections */
+section {
+    padding: 60px 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 1s forwards;
+}
+
+section:nth-of-type(1) { animation-delay: 0.3s; }
+section:nth-of-type(2) { animation-delay: 0.6s; }
+section:nth-of-type(3) { animation-delay: 0.9s; }
+
+/* карточки услуг */
+.services {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #fff3e0;
+    color: #333;
+    padding: 30px;
+    width: 250px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: 0.5s;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+/* форма заявки */
+form input, form button {
+    padding: 12px;
+    margin: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+form button {
+    background: #d2691e;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+form button:hover {
+    background: #ff7f50;
+}
+
+/* footer */
+footer {
+    background: #8b4513;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* анимации */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* адаптив */
+@media(max-width:768px){
+    .services {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header h1 {
+        font-size: 36px;
+    }
+
+    header p {
+        font-size: 18px;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<header>
+<h1>Кофе Рома</h1>
+<p>Тёплое место для кофе и десертов</p>
+<button>Связаться в Telegram</button>
+</header>
+
+<section>
+<h2>Наши предложения</h2>
+<div class="services">
+<div class="card">
+<h3>Кофе</h3>
+<p>Ароматный эспрессо и латте</p>
+</div>
+<div class="card">
+<h3>Десерты</h3>
+<p>Свежая выпечка каждый день</p>
+</div>
+<div class="card">
+<h3>Завтраки</h3>
+<p>Полезные и вкусные блюда с утра</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Оставьте заявку</h2>
+<form id="contactForm">
+<input type="text" name="name" placeholder="Ваше имя" required>
+<input type="tel" name="phone" placeholder="Номер телефона" required>
+<input type="email" name="email" placeholder="Email">
+<br>
+<button type="submit">Отправить заявку</button>
+</form>
+<p id="formMessage" style="color:#d2691e; margin-top:10px;"></p>
+</section>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('formMessage').innerText = "Спасибо! Мы свяжемся с вами.";
+    this.reset();
+});
+</script>
+
+<footer>
+CoffeeRoma.ua
+</footer>
+
+</body>
+</html>
